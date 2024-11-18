@@ -14,7 +14,7 @@
       <div class="row">
         <div class="col-12">
           <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-            <h4 class="mb-sm-0">Form Tambah Biodata</h4>
+            <h3 class="mb-sm-0">Form Tambah Biodata</h3>
           </div>
         </div>
       </div>
@@ -28,7 +28,12 @@
           </div>
           <div class="mb-2">
             <label for="nim" class="form-label">NIM</label>
-            <input type="text" name="nim" class="form-control" id="nim">
+            <input type="text" name="nim"
+              class="form-control <?= $validation->hasError('nim') ? 'is-invalid' : '' ?>" id="nim"
+              value="<?= old('nim') ?>">
+            <div id="validationServer03Feedback" class="invalid-feedback">
+              <?= $validation->getError('nim') ?>
+            </div>
           </div>
           <!-- Select -->
           <label for="input-group" class="form-label">Pilih Jurusan</label>
@@ -53,9 +58,9 @@
             <label for="formFile" class="form-label">Masukkan Foto</label>
             <input class="form-control" type="file" name="foto" id="formFile">
           </div>
-        </div><!--end row-->
-        <button type="submit" class="btn btn-primary mb-1">Tambah Biodata</button>
-        <a href="/" class="btn btn-secondary mb-1">Kembali</a>
+      </div><!--end row-->
+      <button type="submit" class="btn btn-primary mb-1">Tambah Biodata</button>
+      <a href="/" class="btn btn-secondary mb-1">Kembali</a>
       </form>
     </div>
     <!-- container-fluid -->

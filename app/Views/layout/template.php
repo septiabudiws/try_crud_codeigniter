@@ -317,11 +317,11 @@
         <div class="col-sm-6">
           <script>
             document.write(new Date().getFullYear())
-          </script> © Steex.
+          </script> © Septiabudi.WS
         </div>
         <div class="col-sm-6">
           <div class="text-sm-end d-none d-sm-block">
-            Design & Develop by Themesbrand
+            by Moh. Septiabudi W.
           </div>
         </div>
       </div>

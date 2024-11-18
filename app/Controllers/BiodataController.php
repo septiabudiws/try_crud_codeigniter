@@ -20,27 +20,39 @@ class BiodataController extends BaseController
     }
     public function index(){
         $jurusan = $this->jurusanModel->findAll();
-
+        
         $data = [
-            'jurusan' => $jurusan
+            'jurusan' => $jurusan,
+            'validation' => \Config\Services::validation()
         ];
+
         return view('biodata/tambah_biodata', $data);
     }
 
     public function save(){
 
-        
-    $fileFoto = $this->request->getFile('foto');
+        //validasi input
+        if (!$this->validate([
+            'nama' => 'required',
+            'nim' => 'required|is_unique[biodata.nim]'
+        ])) {
+            $validation = \Config\Services::validation();
 
-    // Periksa apakah ada file yang diupload
-    if ($fileFoto->isValid() && !$fileFoto->hasMoved()) {
+            return redirect()->to('/tambah')->withInput()->with('validation', $validation);
+        }
+
         
-        $namaFoto = $fileFoto->getRandomName();
-        
-        $fileFoto->move('foto', $namaFoto);
-    } else {
-        $namaFoto = 'default.jpg'; // Jika tidak ada foto, gunakan default
-    }
+        $fileFoto = $this->request->getFile('foto');
+
+        // Periksa apakah ada file yang diupload
+        if ($fileFoto->isValid() && !$fileFoto->hasMoved()) {
+            
+            $namaFoto = $fileFoto->getRandomName();
+            
+            $fileFoto->move('foto', $namaFoto);
+        } else {
+            $namaFoto = 'default.jpg';
+        }
         // $this->request->getVar();
         $this->biodataModel->save([
             'nama' => $this->request->getVar('nama'),
