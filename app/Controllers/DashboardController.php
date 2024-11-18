@@ -33,6 +33,11 @@ class DashboardController extends BaseController
             'biodata' => $biodata,
         ];
 
+        //cek komik
+        if (empty($data['biodata'])) {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException('Data Dengan id' . $id . 'Tidak Ditemukan');
+        }
+
         return view('detail', $data);
     }
 }

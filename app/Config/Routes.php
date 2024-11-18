@@ -8,4 +8,5 @@ use App\Controllers\DashboardController;
  */
 $routes->get('/', 'DashboardController::index');
 $routes->get('/tambah', 'BiodataController::index');
+$routes->post('/tambah/save', 'BiodataController::save');
 $routes->get('/detail/(:segment)', 'DashboardController::detail/$1');

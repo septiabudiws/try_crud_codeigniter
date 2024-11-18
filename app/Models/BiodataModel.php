@@ -12,7 +12,7 @@ class BiodataModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['nama', 'foto', 'nim', 'id_jurusan', 'no_telpon'];
+    protected $allowedFields    = ['nama', 'foto', 'nim', 'id_jurusan', 'no_telpon', 'alamat'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;
