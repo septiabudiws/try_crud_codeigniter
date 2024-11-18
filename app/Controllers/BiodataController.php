@@ -20,6 +20,8 @@ class BiodataController extends BaseController
     }
     public function index(){
         $jurusan = $this->jurusanModel->findAll();
+
+        //session();
         
         $data = [
             'jurusan' => $jurusan,
@@ -33,10 +35,22 @@ class BiodataController extends BaseController
 
         //validasi input
         if (!$this->validate([
-            'nama' => 'required',
-            'nim' => 'required|is_unique[biodata.nim]'
+            'nama' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} harus diisi'
+                ]
+                ],
+            'nim' => [
+                'rules' => 'required|is_unique[biodata.nim]',
+                'errors' => [
+                    'required' => '{field} harus diisi',
+                    'is_unique' => 'nim sudah terdaftar'
+                ]
+            ]
         ])) {
             $validation = \Config\Services::validation();
+            // dd($validation);
 
             return redirect()->to('/tambah')->withInput()->with('validation', $validation);
         }
