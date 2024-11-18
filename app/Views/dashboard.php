@@ -54,8 +54,8 @@
                 <td><?= $get['alamat']; ?></td>
                 <td><?= $get['no_telpon']; ?></td>
                 <td>
-                  <a href="" class="btn btn-info">Edit</a>
-                  <a href="/biodata/hapus/<?= $get['id'] ?>" class="btn btn-danger">Hapus</a>
+                  <a href="/biodata/edit/<?= $get['id'] ?>" class="btn btn-info">Edit</a>
+                  <a href="/biodata/hapus/<?= $get['id'] ?>" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin Ingin Mengapus?')">Hapus</a>
                 </td>
               </tr>
               <?php endforeach ?>
