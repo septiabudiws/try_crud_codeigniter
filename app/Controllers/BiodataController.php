@@ -79,4 +79,10 @@ class BiodataController extends BaseController
 
         return redirect()->to('/');
     }
+
+    public function hapus($id){
+        $this->biodataModel->delete($id);
+
+        return redirect()->to('/');
+    }
 }

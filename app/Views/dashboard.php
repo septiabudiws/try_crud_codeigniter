@@ -54,8 +54,8 @@
                 <td><?= $get['alamat']; ?></td>
                 <td><?= $get['no_telpon']; ?></td>
                 <td>
-                  <button type="button" class="btn btn-info">Edit</button>
-                  <button type="button" class="btn btn-danger">Hapus</button>
+                  <a href="" class="btn btn-info">Edit</a>
+                  <a href="/biodata/hapus/<?= $get['id'] ?>" class="btn btn-danger">Hapus</a>
                 </td>
               </tr>
               <?php endforeach ?>
