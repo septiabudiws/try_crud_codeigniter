@@ -24,7 +24,10 @@
           <?= csrf_field() ?>
           <div class="mb-2">
             <label for="nama" class="form-label">Nama</label>
-            <input type="text" name="nama" class="form-control" id="nama">
+            <input type="text" name="nama" class="form-control <?= $validation->hasError('nama') ? 'is-invalid' : '' ?>" id="nama" value="<?= old('nama') ?>">
+            <div id="validationServer03Feedback" class="invalid-feedback">
+              <?= $validation->getError('nama') ?>
+            </div>
           </div>
           <div class="mb-2">
             <label for="nim" class="form-label">NIM</label>
@@ -39,12 +42,15 @@
           <label for="input-group" class="form-label">Pilih Jurusan</label>
           <div class="input-group mb-2">
             <label class="input-group-text" for="inputGroupSelect01">Options</label>
-            <select class="form-select" id="inputGroupSelect01" name="jurusan">
+            <select class="form-select <?= $validation->hasError('jurusan') ? 'is-invalid' : '' ?>" id="inputGroupSelect01" name="jurusan" value="<?= old('jurusan') ?>">
               <option selected disabled value="">Pilih ...</option>
               <?php foreach($jurusan as $key) : ?>
               <option value="<?= $key['id_jurusan'] ?>"><?= $key['jurusan'] ?></option>
               <?php endforeach ?>
             </select>
+            <div id="validationServer03Feedback" class="invalid-feedback">
+              <?= $validation->getError('jurusan') ?>
+            </div>
           </div>
           <div class="mb-2">
             <label for="alamat" class="form-label">Alamat</label>
@@ -52,7 +58,10 @@
           </div>
           <div class="mb-2">
             <label for="telpon" class="form-label">No. Telepon</label>
-            <input type="text" name="telpon" class="form-control" id="telpon">
+            <input type="text" name="telpon" class="form-control <?= $validation->hasError('telpon') ? 'is-invalid' : '' ?>" id="telpon" value="<?= old('telpon') ?>">
+            <div id="validationServer03Feedback" class="invalid-feedback">
+              <?= $validation->getError('telpon') ?>
+            </div>
           </div>
           <div class="mb-2">
             <label for="formFile" class="form-label">Masukkan Foto</label>
